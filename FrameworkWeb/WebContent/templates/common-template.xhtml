@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+	<h:outputScript library="javax.faces" name="jsf.js" target="head" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+	<title>
+		Admin - <ui:insert name="title">Wildfly framework</ui:insert>
+	</title> 
+</h:head>
+ 
+<h:body> 
+	<div class="container">
+		<ui:insert name="header">
+			<div class="navbar navbar-inverse">
+				<div class="navbar-brand">
+					Wildfly framework
+				</div>
+			</div>
+		</ui:insert>
+		
+		<ui:insert name="content">No content set!</ui:insert>
+		<ui:insert name="footer">
+			<div class="row text-center">
+				&copy; copyright wildfly-framework
+			</div>
+			
+		</ui:insert>
+		<ui:insert name="scripts"></ui:insert>
+	</div>
+</h:body> 
+
+</html>

@@ -1,67 +1,80 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:c="http://java.sun.com/jsp/jstl/core_1_1"> 
-
-<h:head>
-	<h:outputScript library="javax.faces" name="jsf.js" target="head" />
-</h:head> 
-<h:body> 
-	
-	<h:form>
-		<div>
-			<h:outputLabel value="Title" />
-			<h:inputText value="#{postMB.title}" />
+<ui:composition template="templates/common-template.xhtml"
+ 		xmlns="http://www.w3.org/1999/xhtml"
+      	xmlns:ui="http://java.sun.com/jsf/facelets"
+      	xmlns:f="http://java.sun.com/jsf/core"
+      	xmlns:h="http://java.sun.com/jsf/html">
+    <ui:define name="title">Posts</ui:define>
+	<ui:define name="content">
+		<div class="row">
+			<div class="col-xs-12">
+				<h:form styleClass="form-horizontal">
+					<div class="form-group">
+						<h:outputLabel value="Title"  styleClass="control-label col-sm-2"/>
+						<div class="col-sm-10">
+							<h:inputText value="#{postMB.title}" styleClass="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Content"  styleClass="control-label col-sm-2"/>
+						<div class="col-sm-10">
+							<h:inputText value="#{postMB.content}" styleClass="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<h:outputLabel value="Author ID"  styleClass="control-label col-sm-2"/>
+						<div class="col-sm-10">
+							<h:inputText value="#{postMB.author_Id}" styleClass="form-control" />
+						</div>
+					</div>
+			
+					<div class = "form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<h:inputHidden value="#{postMB.id}" rendered="#{postMB.id > 0}"/>
+							<h:commandButton action="#{postMB.updatePost()}" value="Update" rendered="#{postMB.id > 0}" styleClass="btn btn-default" />
+							<h:commandButton action="#{postMB.createPost()}" value="Create" rendered="#{postMB.id == 0}" styleClass="btn btn-default" />
+						</div>
+					</div>
+				</h:form>
+				
+				<table class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Content</th>
+							<th>Author Id</th>
+							<th>Creation Date</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<ui:repeat var="post" value="#{postMB.getAllPosts()}">
+							<tr>
+								<td>#{post.title}</td>
+								<td>#{post.content}</td>
+								<td>#{post.author_ID}</td>
+								<td>#{post.creation_Date}</td>
+								<td>
+									<h:form>
+										<h:commandLink action="#{postMB.getPost(post.ID)}">
+											<i class="glyphicon glyphicon-edit"></i>
+										</h:commandLink>
+									</h:form>
+								</td>
+								<td>
+									<h:form>
+										<h:commandLink action="#{postMB.deletePost(post.ID)}">
+											<i class="glyphicon glyphicon-trash"></i>
+										</h:commandLink>
+									</h:form>
+								</td>
+							</tr>
+						</ui:repeat>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		<div>
-			<h:outputLabel value="Content" />
-			<h:inputText value="#{postMB.content}" />
-		</div>
-		<div>
-			<h:outputLabel value="Author ID" />
-			<h:inputText value="#{postMB.author_Id}" />
-		</div>
-		<div>
-			<h:inputHidden value="#{postMB.id}" rendered="#{postMB.id > 0}"/>
-			<h:commandButton action="#{postMB.updatePost()}" value="Update" rendered="#{postMB.id > 0}"/>
-			<h:commandButton action="#{postMB.createPost()}" value="Create" rendered="#{postMB.id == 0}"  />
-		</div>
-	</h:form>
-	
-	<table border="solid">
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Content</th>
-				<th>Author Id</th>
-				<th>Creation Date</th>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<ui:repeat var="post" value="#{postMB.getAllPosts()}">
-				<tr>
-					<td>#{post.title}</td>
-					<td>#{post.content}</td>
-					<td>#{post.author_ID}</td>
-					<td>#{post.creation_Date}</td>
-					<td>
-						<h:form>
-							<h:commandLink action="#{postMB.getPost(post.ID)}" value="Edit" />
-						</h:form>
-					</td>
-					<td>
-						<h:form>
-							<h:commandLink action="#{postMB.deletePost(post.ID)}" value="Delete" />
-						</h:form>
-					</td>
-				</tr>
-			</ui:repeat>
-		</tbody>
-	</table>
-
-</h:body> 
-</html>
+	</ui:define>
+		
+</ui:composition>
