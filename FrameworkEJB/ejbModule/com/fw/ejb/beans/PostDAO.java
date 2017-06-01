@@ -6,6 +6,9 @@ import com.fw.jpa.entity.Post;
 
 import java.util.List;
 
+import javax.annotation.ManagedBean;
+import javax.ejb.Local;
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
