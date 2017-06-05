@@ -16,12 +16,27 @@
 	</title> 
 </h:head>
  
-<h:body> 
+<h:body>
+
 	<div class="container">
 		<ui:insert name="header">
 			<div class="navbar navbar-inverse">
-				<div class="navbar-brand">
-					Wildfly framework
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<div class="navbar-brand">
+							Wildfly framework
+						</div>
+					</div>
+					<h:form rendered="#{userManagement.isLoggedIn()}">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a>Hi, #{userManagement.getUser()}! <span class="glyphicon glyphicon-user"></span></a></li>
+							<li>							
+								<h:commandLink action="#{userManagement.logout}" value="Logout">
+									<span class="glyphicon glyphicon-log-out"></span>
+								</h:commandLink>
+							</li>
+						</ul>
+					</h:form>
 				</div>
 			</div>
 		</ui:insert>
