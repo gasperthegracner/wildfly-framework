@@ -1,5 +1,5 @@
-# wildfly-framework
-This is a framework for wildfly applications
+# wildfly-skeleton
+This is a basic skeleton for wildfly applications
 ***
 ## Wildfly eviroment setup
 #### 1. How to start?
