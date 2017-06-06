@@ -16,6 +16,7 @@ import com.sun.istack.internal.NotNull;
  */
 @Entity
 @NamedQuery(name="User.getAll", query="SELECT s FROM User s")
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = { "username" }) })
 public class User implements Serializable {
 	   
 	@Id 
@@ -23,6 +24,7 @@ public class User implements Serializable {
 	private String id;
 	
 	@NotNull
+	@Column(name = "username")
 	private String username;
 	
 	@NotNull
