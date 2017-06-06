@@ -46,18 +46,18 @@ Sample of demo rest method is located in `FrameworkEJB/ejbModule/com.fw.rest/Dem
 
 ## How to use a framework
 ```bash
-$ git clone https://github.com/gasperthegracner/wildfly-framework.git
-$ cd wildfly-framework/
+$ git clone https://github.com/gasperthegracner/wildfly-skeleton.git
+$ cd wildfly-skeleton/
 $ git remote set-url --push origin no_push
 ```
 if you run `$ git remote -v`  you should get something like this
 ```
-origin	https://github.com/gasperthegracner/wildfly-framework.git (fetch)
+origin	https://github.com/gasperthegracner/wildfly-skeleton.git(fetch)
 origin	no_push (push)
 ```
 Now run `$ git remote rename origin source` to rename remote and if you execute  `$ git remote -v` you should get
 ```
-source	https://github.com/gasperthegracner/wildfly-framework.git (fetch)
+source	https://github.com/gasperthegracner/wildfly-skeleton.git(fetch)
 source	no_push (push)
 ```
 Now add a remote with your repository
