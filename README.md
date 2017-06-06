@@ -30,11 +30,12 @@ I folowed this tutorial: https://www.youtube.com/watch?v=Hw_5hpe0CAc&t=3s, steps
 *  Local and remote DAO interface are placed in package `com.fw.ejb.beans.interfaces`
 
 How to add a new entity:
-1. Add a new JPA Entity to `com.fw.jpa.entity`,
-2. Create a Local/Remote bean interface in `com.fw.ejb.beans.interfaces`
-3. Implement a DAO with entity manager in `com.fw.ejb.beans`
+1. Add a new JPA Entity to `com.fw.jpa.entity` (New JPA Entity),
+2. Create a Local/Remote bean interface in `com.fw.ejb.beans.interfaces` (Interface)
+3. Implement a DAO with entity manager in `com.fw.ejb.beans`(Session Bean)
 
 [create a entity](https://www.youtube.com/watch?v=5bXtAim0O2I&list=PL6HqVe_RgWD4SmwwcW0hRNOscUyIkBali&index=3)
+
 [Bean interface implementation](https://www.youtube.com/watch?v=LibDhGFs-Mg&list=PL6HqVe_RgWD4SmwwcW0hRNOscUyIkBali&index=4)
 
 ##### 2.4 Adding a new view (administrator view)
@@ -43,4 +44,28 @@ Administrator view are placed in project `FrameworkWeb/WebContent/`. Templates f
 ##### 2.5 Adding a new REST method
 Sample of demo rest method is located in `FrameworkEJB/ejbModule/com.fw.rest/DemoRS.java`, for fouther methods please follow this example and place all your REST classes and methods inside `FrameworkEJB/ejbModule/com.fw.rest/` 
 
+## How to use a framework
+```bash
+$ git clone https://github.com/gasperthegracner/wildfly-framework.git
+$ cd wildfly-framework/
+$ git remote set-url --push origin no_push
+```
+if you run `$ git remote -v`  you should get something like this
+```
+origin	https://github.com/gasperthegracner/wildfly-framework.git (fetch)
+origin	no_push (push)
+```
+Now run `$ git remote rename origin source` to rename remote and if you execute  `$ git remote -v` you should get
+```
+source	https://github.com/gasperthegracner/wildfly-framework.git (fetch)
+source	no_push (push)
+```
+Now add a remote with your repository
+```
+$ git remote add origin <link-to-your-repo>
+```
+Change branch tracking to your origin
+```
+$ git branch master -u origin/master
+```
 
