@@ -9,7 +9,7 @@ import javax.ejb.Local;
 public interface UserDAOLocal {
 	public User create(User user);
 	public User update(User user);
-	public void remove(int id);
-	public User getUser(int id);
+	public void remove(String id);
+	public User getUser(String id);
 	public List<User> getAllUsers();
 }

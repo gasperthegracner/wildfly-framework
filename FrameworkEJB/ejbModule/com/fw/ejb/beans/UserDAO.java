@@ -41,12 +41,12 @@ public class UserDAO implements UserDAOLocal {
 	}
 	
 	@Override
-	public void remove(int id) {
+	public void remove(String id) {
 		em.remove(getUser(id));
 	}
 	
 	@Override
-	public User getUser(int id) {
+	public User getUser(String id) {
 		return em.find(User.class, id);
 	}
 	

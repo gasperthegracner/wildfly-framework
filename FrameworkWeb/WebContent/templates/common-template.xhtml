@@ -29,7 +29,7 @@
 					</div>
 					<h:form rendered="#{userManagement.isLoggedIn()}">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a>Hi, #{userManagement.getUser()}! <span class="glyphicon glyphicon-user"></span></a></li>
+							<li><a>Hi, #{userManagement.getUsername()}! <span class="glyphicon glyphicon-user"></span></a></li>
 							<li>							
 								<h:commandLink action="#{userManagement.logout}" value="Logout">
 									<span class="glyphicon glyphicon-log-out"></span>
