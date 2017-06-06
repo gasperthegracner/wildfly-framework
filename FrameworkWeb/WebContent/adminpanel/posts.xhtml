@@ -9,6 +9,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<h:form styleClass="form-horizontal">
+					
 					<div class="form-group">
 						<h:outputLabel value="Title"  styleClass="control-label col-sm-2"/>
 						<div class="col-sm-10">
@@ -24,7 +25,7 @@
 					<div class="form-group">
 						<h:outputLabel value="Author ID"  styleClass="control-label col-sm-2"/>
 						<div class="col-sm-10">
-							<h:inputText value="#{postMB.author_Id}" styleClass="form-control" />
+							<h:outputLabel value="#{userManagement.getUser().username}" styleClass="form-control" />
 						</div>
 					</div>
 			
@@ -32,7 +33,7 @@
 						<div class="col-sm-offset-2 col-sm-10">
 							<h:inputHidden value="#{postMB.id}" rendered="#{postMB.id > 0}"/>
 							<h:commandButton action="#{postMB.updatePost()}" value="Update" rendered="#{postMB.id > 0}" styleClass="btn btn-default" />
-							<h:commandButton action="#{postMB.createPost()}" value="Create" rendered="#{postMB.id == 0}" styleClass="btn btn-default" />
+							<h:commandButton action="#{postMB.createPost(userManagement.getUser())}" value="Create" rendered="#{postMB.id == 0}" styleClass="btn btn-default" />
 						</div>
 					</div>
 				</h:form>
@@ -53,7 +54,7 @@
 							<tr>
 								<td>#{post.title}</td>
 								<td>#{post.content}</td>
-								<td>#{post.author_ID}</td>
+								<td>#{post.author.username}</td>
 								<td>#{post.creation_Date}</td>
 								<td>
 									<h:form>

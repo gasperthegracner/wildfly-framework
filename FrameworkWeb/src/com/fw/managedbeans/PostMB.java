@@ -6,9 +6,12 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.transaction.Transactional;
 
 import com.fw.ejb.beans.interfaces.PostDAOLocal;
+import com.fw.ejb.beans.interfaces.UserDAOLocal;
 import com.fw.jpa.entity.Post;
+import com.fw.jpa.entity.User;
 
 @ViewScoped
 @ManagedBean
@@ -16,19 +19,21 @@ public class PostMB {
 
 	@EJB
 	private PostDAOLocal postDAOLocal;
+	private UserDAOLocal userDaoLocal;
 	
 	private int id = 0;
 	private String title;
 	private String content;
 	private String dateTime;
-	private int author_Id;
+	private User author;
 	
-	public void createPost(){
+	public void createPost(User post_author){
+
 		Post post = new Post();
 		post.setTitle(title);
 		post.setContent(content);
 		post.setCreation_Date(Long.toString(Instant.now().getEpochSecond()));
-		post.setAuthor_ID(author_Id);
+		post.setAuthor(post_author);
 		postDAOLocal.create(post);
 	}
 	
@@ -37,7 +42,7 @@ public class PostMB {
 		post.setID(id);
 		post.setTitle(title);
 		post.setContent(content);
-		post.setAuthor_ID(author_Id);
+		post.setAuthor(author);
 		postDAOLocal.update(post);
 	}
 
@@ -51,7 +56,7 @@ public class PostMB {
 		title = p.getTitle();
 		content = p.getContent();
 		dateTime = p.getCreation_Date();
-		author_Id = p.getAuthor_ID();
+		author = p.getAuthor();
 	}
 	
 	public List<Post> getAllPosts(){
@@ -90,12 +95,12 @@ public class PostMB {
 		this.dateTime = dateTime;
 	}
 
-	public int getAuthor_Id() {
-		return author_Id;
+	public User getAuthor() {
+		return author;
 	}
 
-	public void setAuthor_Id(int author_Id) {
-		this.author_Id = author_Id;
+	public void setAuthor(User author) {
+		this.author = author;
 	}
 	
 	

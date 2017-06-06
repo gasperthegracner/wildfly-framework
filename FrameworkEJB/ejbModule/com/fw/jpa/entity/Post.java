@@ -19,61 +19,70 @@ public class Post implements Serializable {
 	   
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int ID;
+	private int id;
 	
 	@NotNull
 	@Length(max=255)
-	private String Title;
+	private String title;
 	
 	@NotNull
 	@Lob
-	private String Content;
+	private String content;
 	
 	@NotNull
-	private String Creation_Date;
+	private String creation_date;
 	
-	@NotNull
-	private int Author_ID;
 	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="author_id")
+	private User author;
+	
+
 	private static final long serialVersionUID = 1L;
 
 	public Post() {
 		super();
-	}   
+	} 
+	
 	public int getID() {
-		return this.ID;
+		return this.id;
 	}
 
 	public void setID(int ID) {
-		this.ID = ID;
-	}   
+		this.id = ID;
+	}
+	
 	public String getTitle() {
-		return this.Title;
+		return this.title;
 	}
 
 	public void setTitle(String Title) {
-		this.Title = Title;
-	}   
+		this.title = Title;
+	}  
+	
 	public String getContent() {
-		return this.Content;
+		return this.content;
 	}
 
 	public void setContent(String Content) {
-		this.Content = Content;
-	}   
+		this.content = Content;
+	} 
+	
 	public String getCreation_Date() {
-		return this.Creation_Date;
+		return this.creation_date;
 	}
 
 	public void setCreation_Date(String Creation_Date) {
-		this.Creation_Date = Creation_Date;
+		this.creation_date = Creation_Date;
 	}   
-	public int getAuthor_ID() {
-		return this.Author_ID;
+	
+	
+	public User getAuthor() {
+		return author;
 	}
-
-	public void setAuthor_ID(int Author_ID) {
-		this.Author_ID = Author_ID;
+	
+	public void setAuthor(User author) {
+		this.author = author;
 	}
    
 }

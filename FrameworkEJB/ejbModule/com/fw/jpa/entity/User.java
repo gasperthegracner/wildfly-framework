@@ -3,6 +3,7 @@ package com.fw.jpa.entity;
 import java.io.Serializable;
 import java.lang.String;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.*;
@@ -32,6 +33,9 @@ public class User implements Serializable {
 	
 	@NotNull
 	private String role;
+	
+	@OneToMany(mappedBy = "author")
+	private List<Post> Posts;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -70,6 +74,14 @@ public class User implements Serializable {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+	
+	public List<Post> getPosts() {
+		return Posts;
+	}
+	
+	public void setPosts(List<Post> posts) {
+		Posts = posts;
 	}
    
 }

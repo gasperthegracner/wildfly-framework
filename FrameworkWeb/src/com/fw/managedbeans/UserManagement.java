@@ -31,17 +31,16 @@ public class UserManagement {
 		return false;
 	}
 	
-	private User getUser(){
+	public User getUser(){
 		if(getContext().getUserPrincipal()!= null){
-			System.out.println(userDAO.getUser("dbd310de-46d7-11e7-a919-92ebcb67fe33").getId());
-			return userDAO.getUser("dbd310de-46d7-11e7-a919-92ebcb67fe33");
+			String username = getContext().getRemoteUser().toString();
+			return userDAO.getUserByName(username);
 		}
 		return null;
 		
 	}
 	
 	public String getUsername(){
-		getUser();
 		return getContext().getRemoteUser();
 	}
 	

@@ -6,6 +6,8 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import com.fw.ejb.beans.interfaces.UserDAOLocal;
 import com.fw.jpa.entity.Post;
@@ -53,6 +55,19 @@ public class UserDAO implements UserDAOLocal {
 	@Override
 	public List<User> getAllUsers() {
 		return em.createNamedQuery("User.getAll",User.class).getResultList();
+	}
+
+	@Override
+	public List<Post> getUsersPosts(String id) {
+		return getUser(id).getPosts();
+	}
+
+	@Override
+	public User getUserByName(String name) {
+		Query query = em.createQuery("FROM User u WHERE u.username = :name");
+        query.setParameter("name", name);
+        return (User)query.getSingleResult();
+         
 	}
 
 }
